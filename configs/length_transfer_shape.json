@@ -1,0 +1,36 @@
+{
+  "weakening": "exponential",
+  "length_model": "shape_contact",
+  "experiment_ids": ["length_transfer"],
+  "contact_evolution": true,
+  "youngs_modulus_MPa": 200000,
+  "reference_embedment_mm": 500,
+  "equal_total_length": true,
+  "random_seed": 7,
+  "workers": 12,
+  "threads_per_worker": 1,
+  "fit_solver": {"points": 33, "check_points": 65, "width": 12, "max_iter": 1000},
+  "final_solver": {"points": 65, "check_points": 257, "width": 16, "max_iter": 1000},
+  "optimizer": {
+    "ftol": 0.002,
+    "xtol": 0.002,
+    "gtol": 0.00001,
+    "log_parameter_difference": 0.015,
+    "compliance_difference_mm_per_kN": 0.0003
+  },
+  "initial_parameters": [
+    -0.5108256238, 3.0445224377, -0.6632942174, 2.0794415417,
+    6.2146080984, 0.0, 1.0, 1.7917594692, 3.0, -0.0800427077,
+    3.0910424534, 3.9120230054, 0.000003647090709003962
+  ],
+  "bounds_lower": [-4.6, -2.3, -8, -2.3, 0, -4, -2, -2.3, 0, -8, -2.3, 0, 0],
+  "bounds_upper": [2.3, 5.7, 8, 7, 7.6, 4, 4, 4.3820266347, 8, 8, 4.3820266347, 7.6, 0.1],
+  "fixed_parameters": {"C_500_mm_per_kN": 0.000003647090709003962},
+  "bounds_role": "Numerical search ranges for effective positive scales and dimensionless length slopes; not measured material bounds.",
+  "objective": "Original 100/300/500 mm calibration records only, with the existing displacement-interval weights and per-curve peak normalization; equal weights among these three curves.",
+  "evaluation_kind": "adaptive_condition_transfer",
+  "output_directory": "results/length_transfer_shape",
+  "initialization_basis": "Calibration-only local shape diagnostics motivate short-length delayed onset and long-length gradual mobilization; all twelve length coefficients are refitted jointly to response curves.",
+  "method_change_reason": "Test whether a continuous geometry-conditioned shape law retains the calibrated plateau and principal long-anchor peak while transferring to 200/400 mm. Keep the finite-depth recovery and diminishing-contact hypotheses, replace forced width proportionality by a fitted positive power, and allow a log-length trend in residual fraction. The onset decays exponentially with length and mobilization has its own positive length power. These are effective response hypotheses within 100-500 mm, not measured material trends.",
+  "compliance_role": "Fix the completed local-diagnostic compliance to isolate length sharing from the already established C/K ambiguity. The value is not an apparatus measurement."
+}

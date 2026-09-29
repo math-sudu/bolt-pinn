@@ -1,0 +1,31 @@
+{
+  "weakening": "exponential",
+  "youngs_modulus_MPa": 200000.0,
+  "reference_embedment_mm": 500.0,
+  "equal_total_length": true,
+  "random_seed": 7,
+  "workers": 12,
+  "threads_per_worker": 1,
+  "fit_solver": {"points": 33, "check_points": 65, "width": 12, "max_iter": 400},
+  "final_solver": {"points": 65, "check_points": 257, "width": 16, "max_iter": 400},
+  "optimizer": {
+    "ftol": 0.002,
+    "xtol": 0.002,
+    "gtol": 0.00001,
+    "log_parameter_difference": 0.015,
+    "compliance_difference_mm_per_kN": 0.0003
+  },
+  "initial_parameters": [
+    -0.8, 0.0,
+    0.9, 0.3, 0.3,
+    -1.2, 0.0, 0.0, 0.0,
+    2.8, 0.0, 0.0,
+    -0.8, 1.4, -1.2, 2.8,
+    0.01
+  ],
+  "bounds_lower": [-4.6, -1.5, -2.3, -1.5, -2.0, -8.0, -4.0, -4.0, -4.0, -2.3, -1.5, -2.0, -4.6, -2.3, -8.0, -2.3, 0.0],
+  "bounds_upper": [2.3, 1.5, 3.0, 1.5, 2.0, 8.0, 4.0, 4.0, 4.0, 5.7, 1.5, 2.0, 2.3, 3.0, 8.0, 5.7, 0.1],
+  "bounds_role": "Broad numerical search ranges for effective parameters; not measured material intervals. C_500 is further bounded by positive collar slip using calibration data only.",
+  "objective": "Equal weight per whole curve and per displacement interval 0-16, 16-40 and above 40 mm; forces normalized by the calibration curve peak. No prediction response enters fitting.",
+  "output_directory": "results/condition_transfer"
+}

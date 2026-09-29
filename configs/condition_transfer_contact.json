@@ -1,0 +1,37 @@
+{
+  "weakening": "exponential",
+  "length_model": "relaxation_contact",
+  "contact_evolution": true,
+  "youngs_modulus_MPa": 200000.0,
+  "reference_embedment_mm": 500.0,
+  "equal_total_length": true,
+  "random_seed": 7,
+  "workers": 12,
+  "threads_per_worker": 1,
+  "fit_solver": {"points": 33, "check_points": 65, "width": 12, "max_iter": 1000},
+  "final_solver": {"points": 65, "check_points": 257, "width": 16, "max_iter": 1000},
+  "optimizer": {
+    "ftol": 0.002, "xtol": 0.002, "gtol": 0.00001,
+    "log_parameter_difference": 0.015,
+    "compliance_difference_mm_per_kN": 0.0003
+  },
+  "initial_parameters": [
+    -0.1588630618, 0.2250479851, 0.8241329220, 0.2336760499, 0.4353872340,
+    -1.9638973711, -1.4570290425, -0.4112036898, -1.4598543804,
+    2.7228836244, 0.4185939185, 1.2322037581,
+    -0.8, 1.74, -2.2, 4.1, 4.605170186, 0.025635341440957343
+  ],
+  "bounds_lower": [
+    -4.6, -1.5, -2.3, -1.5, -2.0, -8.0, -4.0, -4.0, -4.0, -2.3, -1.5, -2.0,
+    -4.6, -2.3, -8.0, -2.3, 0.0, 0.0
+  ],
+  "bounds_upper": [
+    2.3, 1.5, 3.0, 1.5, 2.0, 8.0, 4.0, 4.0, 4.0, 5.7, 1.5, 2.0,
+    2.3, 3.0, 8.0, 7.0, 7.6, 0.1
+  ],
+  "bounds_role": "Numerical search ranges. Effective depth recovery length is fitted on the three calibration lengths; it is not a measured damage depth.",
+  "objective": "Same nine calibration curves, interval weights and force normalization as the first prediction set.",
+  "evaluation_kind": "adaptive_condition_transfer",
+  "output_directory": "results/condition_transfer_contact",
+  "method_change_reason": "Test a finite-column effective-strength relation and strain-based weakening with diminishing overlap against the calibration-visible length mismatch. All coefficients remain shared; prediction responses are excluded from fitting."
+}
